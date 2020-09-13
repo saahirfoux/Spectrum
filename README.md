@@ -3,7 +3,7 @@
 ## Charter/Spectrum Front-End Code Challenge
 For this challenge we would like you to create a React application that pulls restaurant data from a simple API, displays that data in a table, and allows users to filter that data.
 
-<b>API Endpoint:</b> https://code-challenge.spectrumtoolbox.com/api/restaurants
+<b>API Endpoint:</b> https://code-challenge.spectrumtoolbox.com/api/restaurants </br>
 <b>API Key Header:</b> Authorization | Api-Key q3MNxtfep8Gt</br>
 <b>Example Fetch:</b></br>
 <pre>fetch(“https://code-challenge.spectrumtoolbox.com/api/restaurants”, {
