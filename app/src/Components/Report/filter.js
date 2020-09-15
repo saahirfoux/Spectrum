@@ -1,44 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-function Select({options}) {
-    return options.length > 0 ? (
-        <select>
-            {options.map(state => {
-                return (
-                    <option key={state.key} value={state.key}>{state.label}</option>
-                );
-            })}
-        </select>
-      ) : null;
-      
-}
+export const Filter = ({type, options, sFilter, gFilter}) => {
 
-function Checkbox({options}) {
-    return options.length > 0 ? (
-        <select>
-            {options.map(state => {
-                return (
-                    <option key={state.key} value={state.key}>{state.label}</option>
-                );
-            })}
-        </select>
-      ) : null;
-      
-}
+    const DefaultFilter = false;
+    const SelectState = ({options}) => {
+        const handleChange = (e) => {
+            sFilter(e.target.value);
+        }
 
-export const Filter = ({type, options}) => {
+        return options.length > 0 ? (
+            <select onChange={handleChange}>
+                <option key="state" value={DefaultFilter}>All</option>
+                {options.map(state => {
+                    return (
+                        <option key={state.key} value={state.key}>{state.label}</option>
+                    );
+                })}
+            </select>
+          ) : null;
+    }
 
+    const SelectGenre = ({options}) => {
+
+        const handleChange = (e) => {
+            gFilter(e.target.value);
+        }
+        return options.length > 0 ? (
+            <select onChange={handleChange}>
+                <option key="genre" value={DefaultFilter}>All</option>
+                {options.map(genre => {
+                    return (
+                        <option key={genre} value={genre}>{genre}</option>
+                    );
+                })}
+            </select>
+          ) : null;
+    }
     switch(type) {
-        case "Select":
+        case "State":
             return (
-                <Select options={options} />
+                <SelectState options={options} sFilter={sFilter} />
             )
-            break;
-        case "Checkbox":
+        case "Genre":
             return (
-                <Checkbox/>
+                <SelectGenre options={options} gFilter={gFilter} />
             )
-            break;
         default:
             throw new Error("Invalid type");
     }

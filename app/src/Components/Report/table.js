@@ -20,11 +20,12 @@ function Body({report}) {
       ) : null;
 }
 
-export const Table = ({data, search}) => {
+export const Table = ({data, search, genres, sFilter, gFilter}) => {
     return (
         <div>
             <Search search={search}/>
-            <Filter type="Select" options={states}/>
+            <Filter type="State" options={states} sFilter={sFilter}/>
+            <Filter type="Genre" options={genres} gFilter={gFilter}/>
             <Body report={data}/>
         </div>
     )
